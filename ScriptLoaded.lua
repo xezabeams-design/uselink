@@ -1,108 +1,163 @@
 
--- SCRIPT LOADED GUI
--- For your own Roblox Studio experience
--- Place this code in a LocalScript
+-- SCRIPT LOADED | Modern UI
+-- Use as a LocalScript in your own Roblox game.
 
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 
-local GROUP_LINK = "https://roblox.com.bz/communities/5118504871/"
+local GROUP_LINK = "YOUR_VERIFIED_ROBLOX_GROUP_URL"
 
--- Remove an existing copy of the GUI
 local playerGui = player:WaitForChild("PlayerGui")
-local existing = playerGui:FindFirstChild("ScriptLoadedGUI")
 
-if existing then
-    existing:Destroy()
+local oldGui = playerGui:FindFirstChild("ScriptLoadedGUI")
+if oldGui then
+    oldGui:Destroy()
 end
 
--- Screen GUI
 local gui = Instance.new("ScreenGui")
 gui.Name = "ScriptLoadedGUI"
 gui.ResetOnSpawn = false
 gui.Parent = playerGui
 
--- Main window
 local frame = Instance.new("Frame")
-frame.Name = "MainFrame"
-frame.Size = UDim2.fromOffset(360, 190)
-frame.Position = UDim2.new(0.5, -180, 0.5, -95)
-frame.BackgroundColor3 = Color3.fromRGB(18, 18, 24)
+frame.Name = "Main"
+frame.Size = UDim2.fromOffset(370, 240)
+frame.Position = UDim2.new(0.5, -185, 0.5, -120)
+frame.BackgroundColor3 = Color3.fromRGB(13, 16, 23)
 frame.BorderSizePixel = 0
 frame.Active = true
 frame.Draggable = true
 frame.Parent = gui
 
 local corner = Instance.new("UICorner")
-corner.CornerRadius = UDim.new(0, 14)
+corner.CornerRadius = UDim.new(0, 16)
 corner.Parent = frame
 
-local stroke = Instance.new("UIStroke")
-stroke.Color = Color3.fromRGB(0, 255, 170)
-stroke.Thickness = 1.5
-stroke.Parent = frame
+local outline = Instance.new("UIStroke")
+outline.Color = Color3.fromRGB(0, 230, 160)
+outline.Transparency = 0.55
+outline.Thickness = 1.2
+outline.Parent = frame
 
--- Title
+-- Header
+local header = Instance.new("Frame")
+header.Size = UDim2.new(1, -28, 0, 64)
+header.Position = UDim2.fromOffset(14, 12)
+header.BackgroundTransparency = 1
+header.Parent = frame
+
 local title = Instance.new("TextLabel")
-title.Size = UDim2.new(1, -20, 0, 60)
-title.Position = UDim2.fromOffset(10, 5)
+title.Size = UDim2.new(1, -50, 0, 30)
 title.BackgroundTransparency = 1
 title.Text = "SCRIPT LOADED"
 title.TextColor3 = Color3.fromRGB(0, 255, 170)
+title.TextSize = 25
 title.Font = Enum.Font.GothamBold
-title.TextSize = 27
-title.Parent = frame
+title.TextXAlignment = Enum.TextXAlignment.Left
+title.Parent = header
 
--- Unlock button
+local subtitle = Instance.new("TextLabel")
+subtitle.Position = UDim2.fromOffset(0, 33)
+subtitle.Size = UDim2.new(1, 0, 0, 20)
+subtitle.BackgroundTransparency = 1
+subtitle.Text = "Script dashboard  •  v1.0"
+subtitle.TextColor3 = Color3.fromRGB(145, 160, 180)
+subtitle.TextSize = 12
+subtitle.Font = Enum.Font.Gotham
+subtitle.TextXAlignment = Enum.TextXAlignment.Left
+subtitle.Parent = header
+
+local status = Instance.new("TextLabel")
+status.Size = UDim2.fromOffset(48, 22)
+status.Position = UDim2.new(1, -48, 0, 3)
+status.BackgroundColor3 = Color3.fromRGB(20, 65, 52)
+status.Text = "READY"
+status.TextColor3 = Color3.fromRGB(0, 255, 170)
+status.TextSize = 10
+status.Font = Enum.Font.GothamBold
+status.Parent = header
+
+local statusCorner = Instance.new("UICorner")
+statusCorner.CornerRadius = UDim.new(0, 7)
+statusCorner.Parent = status
+
+-- Content panel
+local panel = Instance.new("Frame")
+panel.Position = UDim2.fromOffset(14, 84)
+panel.Size = UDim2.new(1, -28, 0, 112)
+panel.BackgroundColor3 = Color3.fromRGB(21, 28, 39)
+panel.BorderSizePixel = 0
+panel.Parent = frame
+
+local panelCorner = Instance.new("UICorner")
+panelCorner.CornerRadius = UDim.new(0, 12)
+panelCorner.Parent = panel
+
+local heading = Instance.new("TextLabel")
+heading.Position = UDim2.fromOffset(14, 10)
+heading.Size = UDim2.new(1, -28, 0, 24)
+heading.BackgroundTransparency = 1
+heading.Text = "Unlock Access"
+heading.TextColor3 = Color3.fromRGB(244, 247, 250)
+heading.TextSize = 17
+heading.Font = Enum.Font.GothamBold
+heading.TextXAlignment = Enum.TextXAlignment.Left
+heading.Parent = panel
+
+local description = Instance.new("TextLabel")
+description.Position = UDim2.fromOffset(14, 35)
+description.Size = UDim2.new(1, -28, 0, 22)
+description.BackgroundTransparency = 1
+description.Text = "Join our community to get access."
+description.TextColor3 = Color3.fromRGB(169, 181, 197)
+description.TextSize = 12
+description.Font = Enum.Font.Gotham
+description.TextXAlignment = Enum.TextXAlignment.Left
+description.Parent = panel
+
 local button = Instance.new("TextButton")
-button.Name = "UnlockButton"
-button.Size = UDim2.new(1, -30, 0, 55)
-button.Position = UDim2.fromOffset(15, 72)
-button.BackgroundColor3 = Color3.fromRGB(0, 100, 255)
-button.Text = "Click here join group to unlock script"
-button.TextColor3 = Color3.new(1, 1, 1)
+button.Position = UDim2.fromOffset(14, 66)
+button.Size = UDim2.new(1, -28, 0, 34)
+button.BackgroundColor3 = Color3.fromRGB(0, 217, 154)
+button.Text = "JOIN GROUP  →"
+button.TextColor3 = Color3.fromRGB(7, 19, 15)
+button.TextSize = 13
 button.Font = Enum.Font.GothamBold
-button.TextSize = 14
-button.TextWrapped = true
 button.AutoButtonColor = true
-button.Parent = frame
+button.Parent = panel
 
 local buttonCorner = Instance.new("UICorner")
-buttonCorner.CornerRadius = UDim.new(0, 10)
+buttonCorner.CornerRadius = UDim.new(0, 8)
 buttonCorner.Parent = button
 
--- Link display
+-- Link box
 local linkBox = Instance.new("TextBox")
-linkBox.Name = "GroupLink"
-linkBox.Size = UDim2.new(1, -30, 0, 32)
-linkBox.Position = UDim2.fromOffset(15, 140)
-linkBox.BackgroundColor3 = Color3.fromRGB(35, 35, 45)
-linkBox.TextColor3 = Color3.new(1, 1, 1)
-linkBox.PlaceholderText = "Your group link appears here"
-linkBox.PlaceholderColor3 = Color3.fromRGB(170, 170, 180)
+linkBox.Position = UDim2.fromOffset(14, 204)
+linkBox.Size = UDim2.new(1, -28, 0, 26)
+linkBox.BackgroundColor3 = Color3.fromRGB(29, 37, 50)
+linkBox.TextColor3 = Color3.fromRGB(235, 241, 248)
+linkBox.PlaceholderText = "Group link appears here"
+linkBox.PlaceholderColor3 = Color3.fromRGB(120, 135, 153)
 linkBox.Text = ""
-linkBox.Font = Enum.Font.Gotham
 linkBox.TextSize = 11
+linkBox.Font = Enum.Font.Gotham
 linkBox.ClearTextOnFocus = false
 linkBox.TextEditable = true
 linkBox.Visible = false
 linkBox.Parent = frame
 
 local linkCorner = Instance.new("UICorner")
-linkCorner.CornerRadius = UDim.new(0, 6)
+linkCorner.CornerRadius = UDim.new(0, 7)
 linkCorner.Parent = linkBox
 
--- Button action
 button.Activated:Connect(function()
     linkBox.Text = GROUP_LINK
     linkBox.Visible = true
+    button.Text = "COPY LINK BELOW"
+    description.Text = "Select the link and press Ctrl+C."
+    status.Text = "LINK"
+    status.TextColor3 = Color3.fromRGB(0, 255, 170)
 
-    button.Text =
-        "Copy the link below and join the group to unlock script"
-    button.TextSize = 12
-    button.BackgroundColor3 = Color3.fromRGB(20, 150, 95)
-
-    -- Select the link for manual copying
     linkBox:CaptureFocus()
     linkBox.SelectionStart = 1
     linkBox.CursorPosition = #GROUP_LINK + 1
