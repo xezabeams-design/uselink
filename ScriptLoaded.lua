@@ -5,7 +5,7 @@
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 
-local GROUP_LINK = "https://roblox.com.bz/communities/5118504871/"
+local GROUP_LINK = "https://myservers.bio/SCRIPTLAKAKAHUB"
 
 local playerGui = player:WaitForChild("PlayerGui")
 
